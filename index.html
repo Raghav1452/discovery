@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Page Sidebar</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+ @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Poppins", sans-serif;
+ }
+
+ body {
+   min-height: 100vh;
+   background: #F0F4FF;
+ }
+
+ .sidebar {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 85px;
+   display: flex;
+   overflow-x: hidden;
+   flex-direction: column;
+   background: #161a2d;
+   padding: 25px 20px;
+   transition: all 0.4s ease;
+   z-index: 9999999999;
+ }
+
+ .sidebar:hover {
+   width: 260px;
+ }
+
+ .sidebar .sidebar-header {
+   display: flex;
+   align-items: center;
+ }
+
+ .sidebar .sidebar-header img {
+   width: 42px;
+   border-radius: 50%;
+ }
+
+ .sidebar .sidebar-header h2 {
+   color: #fff;
+   font-size: 1.25rem;
+   font-weight: 600;
+   white-space: nowrap;
+ }
+
+ .sidebar-links h4 {
+   color: #fff;
+   font-weight: 500;
+   white-space: nowrap;
+   margin: 10px 0;
+   position: relative;
+ }
+
+ .sidebar-links h4 span {
+   opacity: 0;
+ }
+
+ .sidebar:hover .sidebar-links h4 span {
+   opacity: 1;
+ }
+
+ .sidebar-links .menu-separator {
+   position: absolute;
+   left: 0;
+   top: 50%;
+   width: 100%;
+   height: 1px;
+   transform: scaleX(1);
+   transform: translateY(-50%);
+   background: #4f52ba;
+   transform-origin: right;
+   transition-delay: 0.2s;
+ }
+
+ .sidebar:hover .sidebar-links .menu-separator {
+   transition-delay: 0s;
+   transform: scaleX(0);
+ }
+
+ .sidebar-links {
+   list-style: none;
+   margin-top: 20px;
+   height: 80%;
+   overflow-y: auto;
+   scrollbar-width: none;
+ }
+
+ .sidebar-links::-webkit-scrollbar {
+   display: none;
+ }
+
+ .sidebar-links li a {
+   display: flex;
+   align-items: center;
+   gap: 0 20px;
+   color: #fff;
+   font-weight: 500;
+   white-space: nowrap;
+   padding: 15px 10px;
+   text-decoration: none;
+   transition: 0.2s ease;
+ }
+
+ .sidebar-links li a:hover {
+   color: #161a2d;
+   background: #fff;
+   border-radius: 4px;
+ }
+
+ * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       font-family: "Poppins", sans-serif;
+     }
+
+     body {
+       display: flex;
+       height: 100vh;
+       overflow-x: hidden;
+     }
+
+     .sidebar {
+       width: 85px;
+       height: 100vh;
+       color: #fff;
+       padding: 25px 20px;
+       display: flex;
+       flex-direction: column;
+       position: fixed;
+       transition: width 0.3s ease;
+     }
+
+     .sidebar:hover {
+       width: 260px;
+     }
+
+     .sidebar-header {
+       display: flex;
+       align-items: center;
+     }
+
+     .sidebar-header img {
+       width: 40px;
+       border-radius: 50%;
+     }
+
+     .sidebar-header h2 {
+       font-size: 1.25rem;
+       font-weight: 600;
+       color: #fff;
+       white-space: nowrap;
+       margin-left: 15px;
+       opacity: 0;
+       transition: opacity 0.3s ease;
+     }
+
+     .sidebar:hover .sidebar-header h2 {
+       opacity: 1;
+     }
+
+     .sidebar-links {
+       list-style: none;
+       margin-top: 20px;
+     }
+
+     .sidebar-links li {
+       margin: 15px 0;
+     }
+
+     .sidebar-links li a {
+       display: flex;
+       align-items: center;
+       gap: 15px;
+       color: #fff;
+       font-weight: 500;
+       text-decoration: none;
+       padding: 10px 15px;
+       border-radius: 5px;
+       transition: all 0.3s ease;
+     }
+
+     .sidebar-links li a:hover, .sidebar-links li a.active {
+       background-color: #fff;
+       color: #000;
+     }
+
+     main {
+       margin-left: 100px;
+       padding: 20px;
+       flex-grow: 1;
+     }
+
+     .box1 {
+       max-width: 900px;
+       margin-bottom: 40px;
+       padding: 20px;
+       background-color: #fff;
+       border-radius: 8px;
+       margin-left: 100px;
+       margin-top: 5rem;
+     }
+     .title {
+       margin-left: 100px;
+       padding: 20px;
+       flex-grow: 1;
+     }
+     .title {
+       height: 30px;
+       width: 900px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       font-family: 'Montserrat';
+       font-size: 800;
+       min-height: 100vh;
+     }
+
+     .title {
+       position: relative;
+     }
+
+     .title h4 {
+       position: absolute;
+       transform: translate(-50%, -50%);
+       font-size: 5em;
+     }
+
+     main section{
+         width: max-content;
+     }
+
+ body {
+   background: #3fbff6;
+   color: #333;
+   font: 100% Lato, Arial, Sans Serif;
+   height: 100vh;
+   margin: 0;
+   padding: 0;
+   overflow-x: hidden;
+ }
+
+ #background-wrap {
+     bottom: 0;
+   left: 0;
+   position: fixed;
+   right: 0;
+   top: 0;
+   z-index: -1;
+ }
+
+ /* KEYFRAMES */
+
+ @-webkit-keyframes animateBubble {
+     0% {
+         margin-top: 1000px;
+     }
+     100% {
+         margin-top: -100%;
+     }
+ }
+
+ @-moz-keyframes animateBubble {
+     0% {
+         margin-top: 1000px;
+     }
+     100% {
+         margin-top: -100%;
+     }
+ }
+
+ @keyframes animateBubble {
+     0% {
+         margin-top: 1000px;
+     }
+     100% {
+         margin-top: -100%;
+     }
+ }
+
+ @-webkit-keyframes sideWays {
+     0% {
+         margin-left:0px;
+     }
+     100% {
+         margin-left:50px;
+     }
+ }
+
+ @-moz-keyframes sideWays {
+     0% {
+         margin-left:0px;
+     }
+     100% {
+         margin-left:50px;
+     }
+ }
+
+ @keyframes sideWays {
+     0% {
+         margin-left:0px;
+     }
+     100% {
+         margin-left:50px;
+     }
+ }
+
+ /* ANIMATIONS */
+
+ .x1 {
+     -webkit-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+
+   left: -5%;
+   top: 5%;
+
+   -webkit-transform: scale(0.6);
+   -moz-transform: scale(0.6);
+   transform: scale(0.6);
+ }
+
+ .x2 {
+     -webkit-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+   animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+
+   left: 5%;
+   top: 80%;
+
+   -webkit-transform: scale(0.4);
+   -moz-transform: scale(0.4);
+   transform: scale(0.4);
+ }
+
+ .x3 {
+     -webkit-animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+
+   left: 10%;
+   top: 40%;
+
+   -webkit-transform: scale(0.7);
+   -moz-transform: scale(0.7);
+   transform: scale(0.7);
+ }
+
+ .x4 {
+     -webkit-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+   animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+
+   left: 20%;
+   top: 0;
+
+   -webkit-transform: scale(0.3);
+   -moz-transform: scale(0.3);
+   transform: scale(0.3);
+ }
+
+ .x5 {
+     -webkit-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+   animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+
+   left: 30%;
+   top: 50%;
+
+   -webkit-transform: scale(0.5);
+   -moz-transform: scale(0.5);
+   transform: scale(0.5);
+ }
+
+ .x6 {
+     -webkit-animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
+
+   left: 50%;
+   top: 0;
+
+   -webkit-transform: scale(0.8);
+   -moz-transform: scale(0.8);
+   transform: scale(0.8);
+ }
+
+ .x7 {
+     -webkit-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+
+   left: 65%;
+   top: 70%;
+
+   -webkit-transform: scale(0.4);
+   -moz-transform: scale(0.4);
+   transform: scale(0.4);
+ }
+
+ .x8 {
+     -webkit-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+   animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+
+   left: 80%;
+   top: 10%;
+
+   -webkit-transform: scale(0.3);
+   -moz-transform: scale(0.3);
+   transform: scale(0.3);
+ }
+
+ .x9 {
+   -webkit-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+   animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+
+   left: 90%;
+   top: 50%;
+
+   -webkit-transform: scale(0.5);
+   -moz-transform: scale(0.5);
+   transform: scale(0.5);
+ }
+
+ .x10 {
+     -webkit-animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   -moz-animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+   animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+
+   left: 80%;
+   top: 80%;
+
+   -webkit-transform: scale(0.2);
+   -moz-transform: scale(0.2);
+   transform: scale(0.2);
+ }
+
+ /* OBJECTS */
+
+ .bubble {
+     -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+   border-radius: 50%;
+
+     -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+   -moz-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+
+     height: 40px;
+   position: absolute;
+   width: 40px;
+ }
+
+ .bubble:after {
+     background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%); /* FF3.6+ */
+     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0.5)), color-stop(70%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+     background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* Chrome10+,Safari5.1+ */
+     background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* Opera 12+ */
+     background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* IE10+ */
+     background: radial-gradient(ellipse at center,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* W3C */
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+   -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+   border-radius: 50%;
+
+     -webkit-box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.3);
+   -moz-box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.3);
+   box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.3);
+
+   content: "";
+     height: 30px;
+   left: 10px;
+   position: absolute;
+   width: 30px;
+ }
+
+     .fish{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+     }
+
+     .fish img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+     }
+
+     @keyframes fadeInFromTop {
+         from{
+             opacity: 0;
+             transform: translateY(-20px);
+         }
+         to{
+             opacity: 1;
+             transform: translateY(0);
+         }
+     }
+
+     @keyframes floating {
+         0%{
+             transform: translate(0%, 0%) rotate(360deg)
+         }
+         30%{
+             transform: translate(5%, 15%) rotate(360deg)
+         }
+         55%{
+             transform: translate(10%, 5%) rotate(360deg)
+         }
+         80%{
+             transform: translate(0%, 15%) rotate(360deg)
+         }
+         105%{
+             transform: translate(0%, 0%) rotate(360deg)
+         }
+       }
+
+       .seahorse{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .seahorse img{
+         width: 200px;
+         height: 200px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+     }
+
+     @keyframes fadeInFromTop {
+         from{
+             opacity: 0;
+             transform: translateY(-20px);
+         }
+         to{
+             opacity: 1;
+             transform: translateY(0);
+         }
+     }
+
+     @keyframes floating {
+         0%{
+             transform: translate(0%, 0%) rotate(360deg)
+         }
+         30%{
+             transform: translate(5%, 15%) rotate(360deg)
+         }
+         55%{
+             transform: translate(10%, 5%) rotate(360deg)
+         }
+         80%{
+             transform: translate(0%, 15%) rotate(360deg)
+         }
+         105%{
+             transform: translate(0%, 0%) rotate(360deg)
+         }
+
+
+     }
+
+     .jellyfish{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .jellyfish img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+     }
+
+     .starfish{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .starfish img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+         z-index: 9999999999;
+     }
+
+     .dolphin{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .dolphin img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+         z-index: 9999999999;
+     }
+
+     .octo{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .octo img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+         z-index: 9999999999;
+     }
+
+     .subm{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .subm img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+         z-index: 9999999999;
+     }
+
+     .seal{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .seal img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+         z-index: 9999999999;
+     }
+
+     .slug{
+         width: 100%;
+         height: 100vh;
+         position: relative;
+       }
+
+     .slug img{
+         width: 170px;
+         height: 170px;
+         position: absolute;
+         left: 15%;
+         top: 15% ;
+         animation: fadeInFromTop .5s linear forwards,  floating ease 4s infinite;
+         z-index: 9999999999;
+     }
+
+     .box{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-top: -570px;
+     }
+
+     .container{
+       position: relative;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+     }
+
+     .content{
+       margin: 20px;
+       position: relative;
+       width: 1150px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
+
+     .content .img1{
+       position: relative;
+       width: 700px;
+       height: 400px;
+       margin-left: -320px;
+     }
+
+     .content .img1 img{
+       z-index: 111;
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       border-radius: 10px;
+     }
+
+     .content .text-box{
+       z-index: 222;
+       background: rgba(0, 0, 255, 0.1);
+       backdrop-filter: blur(20px);
+       padding: 40px;
+       max-width: 400px;
+       border: 1px solid rgba(0, 0, 255, 0.1);
+       border-radius: 10px;
+       transform: translate(-80px, 65px);
+       color: #fff;
+     }
+
+     .content .text-box h3{
+       font-size: 1.7em;
+       margin-bottom: 10px;
+     }
+
+     .text-box1 h3{
+       font-size: 3.5rem;
+       margin-top: 100px;
+       margin-left: 370px;
+       -webkit-box-reflect: below 1px linear-gradient(transparent, #0008);
+       line-height: 0.65em;
+       outline: none;
+       animation: animate 5s linear infinite;
+     }
+
+     @keyframes animate
+     {
+       0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%
+       {
+         color: #39FF14;
+         text-shadow: none;
+       }
+       18.1%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%
+       {
+         color: #fff;
+         text-shadow: 0 0 10px #b1e7f7,
+         0 0 20px #b1e7f7,
+         0 0 40px #b1e7f7,
+         0 0 80px #b1e7f7,
+         0 0 160px #b1e7f7;
+
+       }
+     }
+
+     .title h4:nth-child(1) {
+   color: transparent;
+   -webkit-text-stroke: 2px blue;
+ }
+
+ .title h4:nth-child(2) {
+   color: blue;
+   animation: animate-discovery 5s ease-in-out infinite;
+ }
+
+ @keyframes animate-discovery {
+   0%, 100% {
+     clip-path: polygon(0% 50%, 20% 49%, 37% 55%, 59% 65%, 75% 66%, 89% 64%, 100% 57%, 100% 100%, 0% 100%);
+   }
+   50% {
+     clip-path: polygon(0% 55%, 11% 60%, 29% 61%, 46% 57%, 62% 45%, 79% 40%, 100% 35%, 100% 100%, 0% 100%);
+   }
+ }
+
+ .heading3 h3{
+   display: flex;
+   color: transparent;
+ }
+
+ .heading3 h3 span{
+   animation: animate 4s linear infinite;
+   animation-delay: calc(0.1s * var(--i));
+ }
+
+ @keyframes animate
+ {
+   0%
+   {
+     color: #fff;
+     filter: hue-rotate(0deg);
+     text-shadow: 0 0 10px #0f0,
+     0 0 20px #0f0,
+     0 0 40px #0f0,
+     0 0 80px #0f0,
+     0 0 120px #0f0,
+     0 0 200px #0f0,
+     0 0 300px #0f0,
+     0 0 400px #0f0;
+   }
+
+   30%, 70%
+   {
+     color: #fff;
+     filter: hue-rotate(360deg);
+     text-shadow: 0 0 10px #0f0,
+     0 0 20px #0f0,
+     0 0 40px #0f0,
+     0 0 80px #0f0,
+     0 0 120px #0f0,
+     0 0 200px #0f0;
+   }
+
+   100%{
+     color: transparent;
+     box-shadow: none;
+   }
+ }
+
+
+ .text-box1 h3{
+       font-size: 3.5rem;
+       margin-top: 100px;
+       margin-left: 370px;
+       -webkit-box-reflect: below 1px linear-gradient(transparent, #0008);
+       line-height: 0.65em;
+       outline: none;
+       animation: animate1 5s linear infinite;
+     }
+
+     @keyframes animate1
+     {
+       0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%
+       {
+         color: #000;
+         text-shadow: none;
+       }
+       18.1%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%
+       {
+         color: #fff;
+         text-shadow: 0 0 10px #b1e7f7,
+         0 0 20px #b1e7f7,
+         0 0 40px #b1e7f7,
+         0 0 80px #b1e7f7,
+         0 0 160px #b1e7f7;
+
+       }
+     }
+
+     .card {
+       background-color: #333;
+       height: 450px;
+       width: 600px;
+       border-radius: 10px;
+       margin-top: 60px;
+       margin-left: 340px;
+       color: #fff;
+       align-items: center;
+       justify-content: center;
+       display: flex;
+       position: relative;
+     }
+
+     @property --angle{
+       syntax: "<angle>";
+       initial-value: 0deg;
+       inherits: false;
+     }
+
+     .card::after, .card::before{
+       content: '';
+       position: absolute;
+       height: 100%;
+       width: 100%;
+       background-image: conic-gradient(from var(--angle),red, blue, rgb(79, 5, 79), orange, red);
+       border-radius: 15px;
+       z-index: -1;
+       padding: 7px;
+       animation: 3s spin linear infinite;
+     }
+
+     @keyframes spin{
+       from{
+         --angle: 0deg;
+       }
+       to{
+         --angle: 360deg;
+       }
+     }
+
+     .card::before{
+       filter: blur(2rem);
+     }
+
+     .container2{
+       width: 90%;
+       height: 100vh;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       gap: 4rem;
+     }
+
+     .cards{
+       position: relative;
+       width: 18rem;
+       height: 18rem;
+       background: #fff;
+       border-radius: 40px;
+       transition:0.5s;
+       overflow: hidden;
+       cursor: pointer;
+     }
+
+     .cards:hover{
+       height: 24rem;
+     }
+
+     .cards .imageBox{
+       position: relative;
+       width: 100%;
+       height: 16rem;
+       background-image: var(--img);
+       background-position: center;
+       background-size: 100%;
+       transition: 0.5s;
+     }
+
+     .cards .imageBox::before{
+       position: absolute;
+       bottom: -1.8rem;
+       content: '';
+       width: 100%;
+       height: 4rem;
+       border-radius: 40px;
+       background: #fff;
+     }
+
+     .cards .imageBox::after{
+       position: absolute;
+       content: '';
+       right: 0;
+       bottom: 2.17rem;
+       width: 4rem;
+       height: 4rem;
+       border-radius: 50%;
+       background: transparent;
+       box-shadow: 60px 60px 0 40px #fff;
+     }
+
+     .cards .cont{
+       position: relative;
+       top: -1rem;
+       padding: 0 30px;
+       transition: 0.5s;
+       z-index: 1;
+     }
+
+     .cont h3{
+       font-size: 1.2rem;
+       color: #333333;
+     }
+
+     .cont p{
+       margin-top: 1rem;
+       transition: 0.5s;
+       opacity: 0;
+     }
+
+     .cards:hover .cont p{
+       opacity: 1;
+     }
+
+     h1 {
+       font-size: 52px;
+       background: linear-gradient(120deg,#9900ff, #ff9500,#22ff00, #ff0000, #ff9500,#4000ff, #ff00c8, #ffff00);
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       animation: gradientAnimate 8s ease-in-out infinite;
+       background-size: 300% 300%;
+       margin-left: 250px;
+       margin-top: 100px;
+       margin-bottom: 20px;
+     }
+
+     @keyframes gradientAnimate
+     {
+       0%
+       {
+         background-position: 0% 50%;
+       }
+
+       50%
+       {
+         background-position: 100% 50%;
+       }
+
+       100%
+       {
+         background-position: 0% 50%;
+       }
+     }
+
+     .animated-text{
+   font-size: 4rem;
+   font-weight: bold;
+   min-width: 280px;
+   margin-left: 200px;
+   margin-top: 50px;
+
+ }
+
+ .animated-text span{
+   position: relative;
+ }
+
+ .animated-text span::before{
+   content: "Wonders";
+   color: red;
+   animation: words 20s infinite;
+ }
+
+ .animated-text span::after{
+   content: "";
+   position: absolute;
+   width: calc(100% + 8px);
+   height: 100%;
+   background-color: #3fbff6;
+   border-left: 2px solid #ff7f50;
+   right: -8px;
+   animation: cursor .8s infinite, typing 20s steps(14) infinite;
+ }
+
+ @keyframes cursor {
+   to{
+       border-left: 2px solid #ff7f5000;
+   }
+ }
+
+ @keyframes words {
+   0%,20%{
+       content: "Wonders";
+   }
+   21%,40%{
+       content: "Mystries";
+   }
+   41%,60%{
+       content: "Secrets";
+   }
+   61%,80%{
+       content: "Enigma";
+   }
+   81%,100%{
+       content: "Marvels";
+   }
+ }
+
+ @keyframes typing {
+   10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+       width: 0;
+   }
+   5%,20%,25%,40%,45%,60%,65%,80%,85%{
+       width: calc(100% + 8px);
+   }
+ }
+
+ .card-container{
+   perspective: 62.5rem;
+   width: 350px;
+   height: 400px;
+   margin-left: 400px;
+   margin-top: -130px
+ }
+
+ .card2{
+   position: relative;
+   width: 350px;
+   height: 400px;
+   transform-style: preserve-3d;
+   transition: transform 0.6s;
+ }
+
+ .front, .back{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   border-radius: 8px;
+   backface-visibility: hidden;
+ }
+
+ .front{
+   background-color: #FED766;
+   margin: auto;
+   color: #000;
+   transform: rotateY(0deg);
+ }
+
+ .back{
+   background-color: #F46F3E;
+   margin: auto;
+   color: #000;
+   transform: rotateY(-180deg);
+ }
+
+ .card-container:hover .card2{
+   transform: rotateY(-180deg);
+ }
+
+.showcase{
+  width: 90%;
+  height: 100vh;
+  position: relative;
+}
+
+.showcase video{
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.titles{
+  width: 100%;
+  height: 100%;
+  font-size: 100px;
+  color: #fff;
+  mix-blend-mode: multiply;
+}
+
+.grad{
+  background-image: linear-gradient(90deg,#9900ff, #ff9500,#22ff00, #ff0000, #ff9500,#4000ff, #ff00c8, #ffff00);
+  background-clip: text;
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: calc(1em/16);
+  -webkit-background-clip: text;
+  color: #000119;
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+/* Card container */
+.c {
+  position: relative;
+  width: 450px;
+  height: 350px;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Image styles */
+.c__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card content */
+.c__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #5AFF15;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.c:hover .c__content {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+}
+
+/* Title styles */
+.c__title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 700;
+}
+
+.card__description {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+}
+
+.c:hover .c__image {
+  scale: 1.1;
+  transform: rotate(-5deg);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Coiny");
+
+body {
+   margin: 0 auto;
+   padding: 10px;
+   background: #3fbff6; /* fallback for old browsers */
+}
+
+.rdj p {
+  color: #FF00FF;
+  font-weight: bold;
+  padding-top: 30px;
+  text-align: center;
+  font-size: 70px;
+-webkit-animation: bounce .4s ease infinite alternate;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+      text-shadow:
+                  0 5px 0 #ccc,
+                  0 2px 3px rgba(0, 0, 0, 1);
+  }
+  100% {
+    transform:translateY(-20px);
+    text-shadow:  0 50px 0 black,
+                  0 0px 20px rgba(0, 0, 0, .8);
+  }
+}
+
+.ca {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  background: #191919;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.ca::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: #ffce00;
+  transform: skewY(345deg);
+  transition: 0.5s;
+}
+
+.ca:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+
+.ca::after {
+  content: "CORSAIR";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.ca .imBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+/*
+.card .imgBox img {
+    max-width: 100%;
+
+    transition: .5s;
+}
+
+.card:hover .imgBox img {
+    max-width: 50%;
+
+}
+*/
+.ca .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.ca .contentBox h3 {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ca .contentBox .price {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.ca .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: #000000;
+  text-decoration: none;
+  background: #ffce00;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+.ca:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.mouse {
+  height: 300px;
+  width: auto;
+}
+
+
+.rrr h2{
+    position: relative;
+    font-size: 4.5rem;
+    margin-top: 50px;
+    color: #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+    text-transform: uppercase;
+}
+.rrr h2::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #01fe87;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #01fe87;
+    overflow: hidden;
+    animation: glide 6s linear infinite;
+
+}
+@keyframes glide{
+    0%,10%,100%{
+        width: 0;
+    }
+    70%,90%{
+        width: 71%;
+    }
+}
+
+.scope {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: slid 30s linear infinite;
+}
+
+.scope span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(350px);
+}
+.scope span img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: 2s;
+}
+.scope span:hover img {
+  transform: translateY(-50px) scale(1.7);
+}
+@keyframes slid {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+        footer {
+          width: 110%;
+            background-color: #121212; /* Light grey background */
+        }
+        .wrapper {
+            position: relative;
+            width: 800px;
+            height: auto;
+            background: linear-gradient(90deg, #54880e, #f2f2f2);
+            border-radius: 50px;
+            box-shadow: 0 0 60px rgba(0, 0, 0, .3);
+            display: flex;
+            padding: 40px;
+            gap: 20px;
+            margin: 50px auto;
+        }
+        .text-right {
+            flex: 1;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            color: #000;
+        }
+        .text-right h2 {
+            font-size: 2.5em;
+            font-family: 'Parisienne', cursive;
+            margin-bottom: 10px;
+        }
+        .text-right p {
+            font-size: 1.2em;
+        }
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            color: #000; /* Changed from light grey to a darker color */
+            font-size: 2em; /* Increased icon size */
+        }
+        .social-icons a:hover {
+            color: #333;
+            transform: scale(1.2);
+            transition: color 0.3s, transform 0.3s;
+        }
+        .form-wrapper {
+            flex: 1;
+            z-index: 2;
+        }
+        .form-wrapper h2 {
+            font-size: 2em;
+            text-align: center;
+            color: #f2f2f2;
+            margin-bottom: 20px;
+        }
+        .input-box {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .input-box input, .input-box textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.1); /* Slight dark background for contrast */
+            border: 2px solid #f2f2f2;
+            outline: none;
+            border-radius: 40px;
+            font-size: 1em;
+            color: #f2f2f2;
+            padding: 10px 20px 10px 40px;
+        }
+        .input-box textarea {
+            height: 100px;
+            border-radius: 20px;
+            resize: none;
+        }
+        .input-box input::placeholder, .input-box textarea::placeholder {
+            color: rgba(255, 255, 255, .7); /* Adjusted opacity */
+        }
+        .input-box .icon {
+            position: absolute;
+            left: 15px;
+            color: #f2f2f2;
+            font-size: 1.5em;  /* Increased icon size */
+            line-height: 55px;
+        }
+        .wrapper button {
+            width: 100%;
+            height: 45px;
+            background: #f2f2f2;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #54880e;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+.anmm h2{
+    font-size: 70px;
+    color: transparent;
+    -webkit-text-stroke: 1px #ffea00;
+    background: url(back.png);
+    -webkit-background-clip: text;
+    background-position: 100px 0;
+    animation: image 20s linear infinite;
+}
+@keyframes image{
+    100%{
+        background-position: 2000px 0;
+    }
+}
+
+.rt {
+  display: inline-block;
+  border-radius: 20px;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  cursor: pointer;
+  margin: 40px 20px;
+  background-color: #ffffff;
+  margin-left: 50px
+}
+figure {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform-origin: 0% 0%;
+  transition: all 850ms ease-in-out;
+  z-index: 2;
+  border-radius: 20px;
+  background-color: #fda03d;
+}
+.rt:hover figure {
+  top: -20%;
+  left: -10%;
+  transform: scale(0.5);
+}
+.yuyu {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px;
+}
+.til {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  right: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+.til h2 {
+  font-size: 16px;
+  text-align: center;
+}
+.co {
+  position: absolute;
+  bottom: 0;
+  padding: 16px 25px;
+  z-index: 1;
+  color: #505050;
+  text-align: justify;
+  line-height: 20px;
+}
+  </style>
+
+</head>
+<body style="width: 100%;">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="#home"><img src="logo.png" alt="logo"></a>
+      <h2>Deep Sea</h2>
+    </div>
+    <ul class="sidebar-links" style="margin-right: -10px;">
+      <li><a href="#home"><i class="fa-solid fa-house-chimney" style="margin-left: 7px;"></i>Home</a></li>
+      <li><a href="#marinelife"><i class="fa-solid fa-fish-fins" style="margin-left: 7px;"></i> Marine Life</a></li>
+      <li><a href="#wonders"><i class="fa-solid fa-circle-question" style="margin-left: 8.7px;"></i>Wonders</a></li>
+      <li><a href="#discovery"><i class="fa-solid fa-magnifying-glass" style="margin-left: 8px;"></i> Discoveries</a></li>
+      <li><a href="#tech"><i class="fa-solid fa-ship" style="margin-left: 7px;"></i> Technology</a></li>
+      <li><a href="#products"><i class="fa-solid fa-bag-shopping" style="margin-left: 10px;"></i> Our Products</a></li>
+      <li><a href="#dyk"><i class="fa-solid fa-lightbulb" style="margin-left: 12px;"></i>Did You know</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main style="width: 100%;">
+    <section id="home" style="width: 80%;">
+    <div class="title" style="margin-top: -195px; align-items: center; justify-content: center; margin-left: 510px; margin-right: 100px;">
+          <h4>DEEP SEA DISCOVERY</h4>
+          <h4>DEEP SEA DISCOVERY</h4>
+    </div>
+    <div class="subtitle" style="z-index: 9999999999; color: #fff; margin-top: -320px; margin-left: 370px; width: fit-content;">
+      <h3>UNVEILING THE MARVELS OF THE DEEP SEA</h3>
+    </div>
+    <div id="background-wrap">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x9"></div>
+        <div class="bubble x10"></div>
+    </div>
+    <div class="fish" style="width: fit-content;">
+        <img src="fish.png" alt="fish" style="margin-top: -210px; margin-left: 950px;" class="">
+    </div>
+
+    <div class="seahorse">
+      <img src="seahorse.png" alt="seahorse" style="margin-top: -700px; margin-left: 550px; z-index: 9999999999;" class="">
+    </div>
+      <div class="box" style="margin-top: -1170px; width: fit-content; margin-left: 160px;">
+        <div class="container">
+          <div class="content">
+            <div class="img1">
+              <img src="scuba_diving.jpg" alt="deep sea">
+            </div>
+            <div class="text-box">
+              <h3>Dive Into the Unknown</h3>
+              <p style="text-align: justify;">Discover the breathtaking secrets of Earth's final frontier-where mysterious creatures, ancient treasures, and hidden wonders await. At Deep Ocean
+                 Discoveries, we unveil the beauty and mystery of the deep sea, blending science, adventure, and innovation to  explore a world few have ever seen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box2" style="width: fit-content;">
+        <div class="container1">
+          <div class="content1">
+            <div class="text-box1" style="width: fit-content;">
+              <h3>IMPORTANCE</h3>
+              <div class="jellyfish" style="height: fit-content; width: fit-content;">
+                <img src="jellyfish.png" alt="jellyfish" style="margin-top: -90px; margin-left: 800px; z-index: 9999999999;" class="">
+              </div>
+            </div>
+          </div>
+          <div class="car" style="margin-left: 30px;">
+          <div class="box1" style="background-color: purple;" data-aos="zoom-in" data-aos-duration="4000">
+            <font size="5" color="white"><b>Understanding Earth's Origin</b></font>
+          </br>
+          </br>
+            <font color="white" size="4">Studying deep-sea geology and ecosystems helps scientists understand Earth's formation and evolution.</font>
+          </br>
+            <font color="white" size="4"><b>Example: </b></font>
+            <font color="white" size="4">Hydrothermal vents provide insights into the origins of life.</font>
+          </div>
+          <div class="box1" style="background-color: purple;" data-aos="zoom-in" data-aos-duration="4000">
+            <font size="5" color="white"><b>Discovery Of New Species</b></font>
+          </br>
+          </br>
+            <font color="white" size="4">The deep sea is home to unique
+              organisms that thrive in extreme
+              conditions, expanding our knowledge
+              of biodiversity.</font>
+          </br>
+            <font color="white" size="4"><b>Value: </b></font>
+            <font color="white" size="4">Provides models for life on
+              other planets (astrobiology).
+              </font>
+          </div>
+          <div class="box1" style="background-color: purple;" data-aos="zoom-in" data-aos-duration="4000">
+            <font size="5" color="white"><b>Medical Advacements</b></font>
+          </br>
+          </br>
+            <font color="white" size="4">Deep-sea organisms produce
+              bioactive compounds that lead to
+              life-saving drugs, including
+              antibiotics, anticancer agents, and
+              antivirals.
+              </font>
+          </br>
+            <font color="white" size="4"><b>Example: </b></font>
+            <font color="white" size="4">Anti-cancer drugs
+              derived from deep-sea sponges.</font>
+          </div>
+          <div class="box1" style="background-color: purple;" data-aos="zoom-in" data-aos-duration="4000">
+            <font size="5" color="white"><b>Carbon Storage</b></font>
+          </br>
+          </br>
+            <font color="white" size="4">The deep ocean acts as a critical
+              carbon sink, regulating global carbon
+              dioxide levels and mitigating climate
+              change.
+              </font>
+          </br>
+            <font color="white" size="4"><b>Example: </b></font>
+            <font color="white" size="4">Seafloor sediments store
+              vast amounts of carbon.
+              </font>
+          </div>
+          <div class="box1" style="background-color: purple;" data-aos="zoom-in" data-aos-duration="4000">
+            <font size="5" color="white"><b>Preserving biodiversity</b></font>
+          </br>
+          </br>
+            <font color="white" size="4">Protecting deep-sea ecosystems
+              ensures the survival of species that
+              contribute to global ecological
+              balance.
+              </font>
+          </div>
+          <div class="box1" style="background-color: purple;" data-aos="zoom-in" data-aos-duration="4000">
+            <font size="5" color="white"><b>Monitering Climate Change</b></font>
+          </br>
+          </br>
+            <font color="white" size="4">Deep-sea exploration helps track
+              oceanic changes, such as
+              temperature shifts and sea-level rise.
+              </font>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="video" data-aos="zoom-in" data-aos-duration="4000" style="width: fit-content;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xnF4_NgaVt0?si=N5SRrTItRjVJqovO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius: 10px; z-index: 9999999999; margin-left: 280px; margin-top: 100px"></iframe>
+      </div>
+    </section>
+  </br>
+</br>
+</br>
+
+    <hr width="1100px">
+</BR>
+</br>
+    <section id="marinelife">
+      <div class="heading3" style="display: flex; align-items: center; justify-content: center; margin-left: 60px; font-size: 4em">
+        <h3>
+          <span style="--i:1">M</span>
+          <span style="--i:2">A</span>
+          <span style="--i:3">R</span>
+          <span style="--i:5">I</span>
+          <span style="--i:6">N</span>
+          <span style="--i:7">E</span>
+          <span style="--i:8; margin-left: 3vw;">L</span>
+          <span style="--i:9">I</span>
+          <span style="--i:10">F</span>
+          <span style="--i:11">E</span>
+        </h3>
+      </div>
+      <div class="starfish" style="height: fit-content; width: fit-content;">
+        <img src="starfish.png" alt="jellyfish" style="margin-top: -120px; margin-left: 800px; z-index: 9999999999;">
+      </div>
+      <div class="card" style="background-color: #333; height: 450px; width: 600px; border-radius: 10px; margin-top: 10px; margin-left: 260px; color: #fff; align-items: center; justify-content: center; display: flex;">
+        <center>
+          <div>
+            <p style="text-align: justify; width: 510px; font-size:1.1rem">Marine life refers to the organisms that
+              inhabit the ocean and other saltwater
+              environments. It includes a vast
+              diversity of species, ranging from
+              microscopic plankton to the largest
+              animals on Earth, such as blue whales.
+              These organisms are adapted to various
+              conditions, from shallow coastal waters
+              to the deep ocean trenches.
+            </p>
+          </div>
+        </br>
+          <div class="head">
+            <h3 style="font-size: 2rem;"><b>IMPORTANCE</b></h3>
+          </div>
+          <p style="text-align: justify; width: 510px;">Marine life is the heartbeat of our
+            planet. It produces over 50% of our
+            oxygen, regulates the climate, and
+            sustains billions with food and
+            livelihoods. Vibrant ecosystems like
+            coral reefs protect coastlines and
+            inspire awe, while marine organisms
+            provide life-saving medicines. Without
+            thriving oceans, life on Earth would
+            falter. Protecting marine life means
+            securing a healthier, more beautiful
+            future for all.
+            </p>
+        </center>
+      </div>
+    </br>
+      <h1>Diversity Of Marine Life</h1>
+  </br>
+      <container2 style="display: flex; gap: 4rem; align-items: center; justify-content: center; margin-left: 55px;">
+        <div class="cards">
+          <div class="imageBox" style="--img: url('jellyfish.jpg')"></div>
+          <div class="cont">
+            <h3>Invertibrates</h3>
+            <p style="text-align: justify;">Species like jellyfish, corals, and mollusks.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="imageBox" style="--img: url('planton.png')"></div>
+          <div class="cont">
+            <h3>Plankton</h3>
+            <p style="text-align: justify;">Microscopic organisms forming the foundation of the marine foodweb.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="imageBox" style="--img: url('fish.jpg')"></div>
+          <div class="cont">
+            <h3>Fish</h3>
+            <p style="text-align: justify;">Ranging from small reef dwellers to large pelagic species.</p>
+          </div>
+        </div>
+      </container2>
+      <container2 style="display: flex; gap: 4rem; align-items: center; justify-content: center; margin-left: 55px; margin-top: 4rem;">
+        <div class="cards">
+          <div class="imageBox" style="--img: url('turtle.jpg')"></div>
+          <div class="cont">
+            <h3>Marine Reptiles</h3>
+            <p style="text-align: justify;">Reptiles like tutle, sea snake that thrived in the oceans from millions of years.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="imageBox" style="--img: url('whale.png')"></div>
+          <div class="cont">
+            <h3>Marine Mammals</h3>
+            <p style="text-align: justify;">Marine Mammals which include whales, dolphins are warm blooded vertibrates that live in oceans.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="imageBox" style="--img: url('pengu.jpg')"></div>
+          <div class="cont">
+            <h3>Sea Birds</h3>
+            <p style="text-align: justify;">Species like penguins, albatrosses, puffins, ans seagulls depend on the ocean for food.</p>
+          </div>
+        </div>
+      </container2>
+
+      <div class="vid" style="margin-top: 200px; margin-left: 280px" data-aos="zoom-in" data-aos-duration="4000">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6jusK-m2-Ek?si=vLfdvTQpvZsgUil6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+    <hr width="1100px" style="margin-top: 75px;">
+    <section id="wonders">
+      <div class="animated-text" style="width: max-content; display: flex; margin-left: 250px;">
+        <p style="color: #fff; margin-right: 10px;">Deep Sea </p><span></span>
+      </div>
+
+      <div class="dolphin" style="height: fit-content; width: fit-content;" mar>
+        <img src="dolphin.png" alt="jellyfish" style="margin-top: -120px; margin-left: 800px; z-index: 9999999999;">
+      </div>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      <div class="flex" style="margin-top: -130px; border-radius: 10px; width: fit-content; margin-left: 140px;">
+        <div class="image" style="width: 350px;" data-aos="fade-up" data-aos-duration="4000">
+          <img alt="Image" src="Volcano Underwater.jpg" height= "400px" width="350px" style="border-radius:10px;"/>
+        </div>
+      </div>
+      <div class="card-container" style="margin-top: -405px; width: fit-content; margin-left: 650px;">
+        <div class="card2">
+          <div class="front">
+            <h2 style="margin: 20px; margin-left: 70px;">Marine Valcanoes</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">Volcanic eruptions that occur under the ocean, releasing magma, gas, and ash into the surrounding water.
+               These eruptions can create new landforms, like volcanic islands, or lead to the formation of hydrothermal
+               vents, which support unique ecosystems.</p>
+          </div>
+          <div class="back">
+            <h2 style="margin: 20px; margin-left: 70px;">Kavachi Valcano</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">Kavachi, an active submarine volcano near the Solomon Islands, is known as the "Sharkcano" for hosting
+               sharks inside its crater. It frequently erupts, creating temporary islands and heating surrounding waters.
+               Its unique ecosystem offers insights into marine life's adaptability to extreme environments.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex" style="margin-top: 100px; border-radius: 10px; width: fit-content; margin-left: 140px;">
+        <div class="image" style="width: 350px;" data-aos="fade-up" data-aos-duration="4000">
+          <img alt="Image" src="Mariana.jpg" height= "400px" width="350px" style="border-radius:10px;"/>
+        </div>
+      </div>
+      <div class="card-container" style="margin-top: -405px; width: fit-content; margin-left: 650px;">
+        <div class="card2">
+          <div class="front">
+            <h2 style="margin: 20px; margin-left: 70px;">Ocean Trenches</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">Ocean trenches are the deepest places
+in the ocean, created when one part of
+Earth's crust slides under another. They
+are like deep underwater valleys. Even in the dark
+and high pressure, strange and amazing
+creatures live there.
+</p>
+          </div>
+          <div class="back">
+            <h2 style="margin: 20px; margin-left: 70px;">Mariana Trench</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">The Mariana Trench is Earth's deepest
+oceanic wonder, plunging nearly 11
+kilometers (7 miles) into the Pacific at
+Challenger Deep. This mysterious,
+otherworldly abyss, where sunlight
+never reaches, is home to bizarre,
+resilient creatures and remains one of
+the most enigmatic, unexplored
+frontiers on the planet.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex" style="margin-top: 100px; border-radius: 10px; width: fit-content; margin-left: 140px;">
+        <div class="image" style="width: 350px;" data-aos="fade-up" data-aos-duration="4000">
+          <img alt="Image" src="titanict.jpg" height= "400px" width="350px" style="border-radius:10px;"/>
+        </div>
+      </div>
+      <div class="card-container" style="margin-top: -405px; width: fit-content; margin-left: 650px;">
+        <div class="card2">
+          <div class="front">
+            <h2 style="margin: 20px; margin-left: 100px;">Ship Wrecks</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">Shipwrecks are sunken vessels lost to
+the ocean, preserving history and
+mystery beneath the waves. These
+underwater time capsules, like the
+Titanic, serve as artificial reefs, host
+unique marine life, and reveal stories of
+past maritime adventures and tragedies.</p>
+          </div>
+          <div class="back">
+            <h2 style="margin: 20px; margin-left: 100px;">Titanic Ship</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">The Titanic, a luxury British passenger
+liner, sank on its maiden voyage in 1912
+after hitting an iceberg. Over 1,500 lives
+were lost, making it one of history's
+deadliest maritime disasters. Its wreck,
+discovered in 1985, remains a symbol of
+human ambition, tragedy, and the
+mysteries of the deep sea.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex" style="margin-top: 100px; border-radius: 10px; width: fit-content; margin-left: 140px;">
+        <div class="image" style="width: 350px;" data-aos="fade-up" data-aos-duration="4000">
+          <img alt="Image" src="seamount.jpg" height= "400px" width="350px" style="border-radius:10px;"/>
+        </div>
+      </div>
+      <div class="card-container" style="margin-top: -405px; width: fit-content; margin-left: 650px;">
+        <div class="card2">
+          <div class="front">
+            <h2 style="margin: 20px; margin-left: 100px;">Seamounts</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">Seamounts are underwater mountains
+formed by volcanic activity, rising from
+the ocean floor but not reaching the
+surface. They are biodiversity hotspots,
+attracting marine life due to nutrient-rich
+waters. They support unique
+ecosystems and offer insights into
+Earth's geological and ecological
+processes.
+</p>
+          </div>
+          <div class="back">
+            <h2 style="margin: 20px; margin-left: 50px;">Emperor Seamount</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">The Emperor Seamount Chain is a
+series of underwater volcanic
+mountains in the Pacific Ocean, part of
+the Hawaiian-Emperor chain. Formed by
+a hotspot, these seamounts reveal
+Earth's geological history and host
+diverse marine life, making them vital
+for studying plate tectonics and ocean
+ecosystems.
+</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex" style="margin-top: 100px; border-radius: 10px; width: fit-content; margin-left: 140px;">
+        <div class="image" style="width: 350px;" data-aos="fade-up" data-aos-duration="4000">
+          <img alt="Image" src="burmudaa.jpg" height= "400px" width="350px" style="border-radius:10px;"/>
+        </div>
+      </div>
+      <div class="card-container" style="margin-top: -405px; width: fit-content; margin-left: 650px;">
+        <div class="card2">
+          <div class="front">
+          <h2 style="margin: 20px; margin-left: 60px;">Burmuda Triangle</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">The Bermuda Triangle, a region in the
+North Atlantic between Miami, Bermuda,
+and Puerto Rico, is infamous for
+mysterious ship and aircraft
+disappearances. While legends suggest
+supernatural causes, scientific
+explanations include navigational errors,
+weather anomalies, and methane gas
+eruptions.
+</p>
+          </div>
+          <div class="back">
+            <h2 style="margin: 20px; margin-left: 110px;">Pyramids</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">Reports of
+pyramid-like structures discovered
+in the Bermuda Triangle area have
+led to various theories about ancient
+civilizations and even alien
+involvement. Although there is no
+definitive proof of these pyramids,
+they continue to fuel speculation
+about the mysterious area.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex" style="margin-top: 100px; border-radius: 10px; width: fit-content; margin-left: 140px;">
+        <div class="image" style="width: 350px;" data-aos="fade-up" data-aos-duration="4000">
+          <img alt="Image" src="vent.jpg" height= "400px" width="350px" style="border-radius:10px;"/>
+        </div>
+      </div>
+      <div class="card-container" style="margin-top: -405px; width: fit-content; margin-left: 650px;">
+        <div class="card2">
+          <div class="front">
+            <h2 style="margin: 20px; margin-left: 50px;">Hydrothermal Vents</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">Hydrothermal vents are underwater hot
+springs found along tectonic plate
+boundaries, where superheated water
+rich in minerals escapes from the
+Earth's crust. Despite extreme heat,
+pressure, and darkness, they host
+unique ecosystems with creatures like
+tube worms and giant clams, thriving on
+chemical energy rather than sunlight.</p>
+          </div>
+          <div class="back">
+            <h2 style="margin: 20px; margin-left: 80px;">Black Smokers</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">A famous example of a hydrothermal
+vent system is the Black Smokers found
+along the Mid-Atlantic Ridge and East
+Pacific Rise. These vents emit dark,
+mineral-rich plumes from the seafloor,
+creating a unique habitat for organisms
+like giant tube worms, eyeless shrimp,
+and heat-tolerant bacteria.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex" style="margin-top: 100px; border-radius: 10px; width: fit-content; margin-left: 140px;">
+        <div class="image" style="width: 350px;" data-aos="fade-up" data-aos-duration="4000">
+          <img alt="Image" src="blue hole.jpg" height= "400px" width="350px" style="border-radius:10px;"/>
+        </div>
+      </div>
+      <div class="card-container" style="margin-top: -405px; width: fit-content; margin-left: 650px;">
+        <div class="card2">
+          <div class="front">
+            <h2 style="margin: 20px; margin-left: 110px;">Blue Holes</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">A blue hole is a large, underwater
+sinkhole or cavern, typically found in
+coastal regions and oceans. These
+deep, circular formations have strikingly
+blue water due to their depth and unique
+light absorption. Famous examples
+include the Great Blue Hole in Belize
+and Dragon Hole in the South China Sea.</p>
+          </div>
+          <div class="back">
+            <h2 style="margin: 20px; margin-left: 50px;">The Great Blue Hole</h2>
+            <p style="width: 310px; text-align: justify; margin-left: 20px; font-size: 18px">The Great Blue Hole is a giant
+underwater sinkhole off Belize,
+measuring 300 meters wide and 125
+meters deep. It's a popular dive site,
+known for its stunning marine life, clear
+waters, and unique geological features,
+making it one of the most famous blue
+holes in the world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr width="1100px" style="margin-top: 75px;">
+    <section id="discovery" style="margin-top: 75px;">
+        <h2 class="grad" style="margin-left:190px;" data-aos="zoom-in" data-aos-duration="4000">LATEST DISCOVERY</h2>
+        <div class="octo" style="height: fit-content; width: fit-content;">
+          <img src="octopus.png" alt="jellyfish" style="margin-top: -120px; margin-left: 900px; z-index: 9999999999;">
+        </div>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="intro" style="width: 700px;" style="width: 500px; margin-left: 200px;">
+        <p style="font-size: 1.5rem; text-align: justify; margin-left: 200px; width: 700px;">Recent underwater explorations have
+unveiled remarkable discoveries,
+shedding light on the ocean's hidden
+depths. Here are some of the latest
+findings:
+</p>
+        </div>
+
+        <div class="container5" style="margin-top: 130px; display: flex; text-align: justify;">
+          <div class="imag" style="margin-right: 50px;">
+            <img src="mountain.jpg" alt="" height="350px" width="600px">
+          </div>
+          </br>
+          <div class="txt" style="width: 400px; margin-top: -13px;">
+            <h3 style="font-size: 35px;">Discovery of Gigantic Underwater Mountain</h3>
+            <p style="font-size: 20px; margin-top: 10px;">In November 2023, researchers mapping
+the seafloor near Guatemala uncovered
+a colossal underwater mountain, or
+seamount, that is twice as tall as the
+world's tallest building, the Burj Khalifa.</p>
+        </br>
+        <div class="article" style="width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; background-color: red;">
+          <a href="https://www.ndtv.com/science/oceanographers-discover-gigantic-undersea-mountain-taller-than-mount-olympus-6491456" style="color: white;">Article</a>
+        </div>
+          </div>
+        </div>
+        <div class="container5" style="margin-top: 130px; display: flex; text-align: justify;">
+        </br>
+        <div class="txt" style="width: 400px; margin-top: -13px; margin-left: 20px;">
+          <h3 style="font-size: 34px;">Discovery of <i>Dulcibella Camanchaca</i></h3>
+          <p style="font-size: 20px; margin-top: 10px;">In December 2024, scientists identified
+a new species of deep-sea predator
+named Dulcibella camanchaca in the
+Atacama Trench off the coast of Chile.
+This shrimp-like crustacean, measuring
+approximately 4 centimeters.</p>
+      </br>
+      <div class="article" style="width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; background-color: red;">
+        <a href="https://www.ndtv.com/science/scientists-discover-alien-like-predator-in-oceans-depth-call-it-darkness-7251525" style="color: white;">Article</a>
+      </div>
+        </div>
+          <div class="imag" style="margin-left: 60px;">
+            <img src="ffff.jpg" alt="" height="350px" width="600px">
+          </div>
+        </div>
+        <div class="container5" style="margin-top: 130px; display: flex; text-align: justify;">
+          <div class="imag" style="margin-right: 50px;">
+            <iframe width="600px" height="350" src="https://www.youtube.com/embed/3ObbKo8iD08?si=LrFxI2Yc78DnRTxN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          </br>
+          <div class="txt" style="width: 400px; margin-top: -13px;">
+            <h3 style="font-size: 35px;">Over 100 new species discovered off</h3>
+            <p style="font-size: 20px; margin-top: 10px;">An expedition off the coast of Chile
+uncovered more than 100 previously
+unknown marine species. Utilizing
+advanced underwater robots capable of
+descending over 4,500 meters,
+researchers explored underwater
+mountains, including one four times the
+size of the world's tallest building.</p>
+          </div>
+        </div>
+        <div class="container5" style="margin-top: 130px; display: flex; text-align: justify;">
+        </br>
+        <div class="txt" style="width: 400px; margin-top: -13px; margin-left: 20px;">
+          <h3 style="font-size: 34px;">Unveiling of a Massive Coral Structure</h3>
+          <p style="font-size: 20px; margin-top: 10px;">In November 2024, scientists discovered the largest coral ever
+recorded in the Solomon Islands. This
+massive coral measures 18 feet high,
+112 feet wide, and 105 feet long, and is
+even visible from space. </p>
+      </br>
+      <div class="article" style="width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; background-color: red;">
+        <a href="https://www.thehindu.com/sci-tech/energy-and-environment/scientists-say-worlds-largest-coral-found-near-solomon-islands/article68866946.ece" style="color: white;">Article</a>
+      </div>
+        </div>
+          <div class="imag" style="margin-left: 60px;">
+            <img src="Coral.avif" alt="" height="350px" width="600px">
+          </div>
+        </div>
+        <div class="container5" style="margin-top: 130px; display: flex; text-align: justify;">
+          <div class="imag" style="margin-right: 50px;">
+            <iframe width="600" height="350" src="https://www.youtube.com/embed/VT31odL4-xc?si=TzOhNSiVY4ygZ3td" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          </br>
+          <div class="txt" style="width: 400px; margin-top: -13px;">
+            <h3 style="font-size: 35px;">Discovery of 'Dark Oxygen' Production</h3>
+            <p style="font-size: 20px; margin-top: 10px;">Scientists have observed a phenomenon
+termed "dark oxygen" on the ocean floor,
+where oxygen is produced in the
+absence of sunlight. This challenges the
+conventional understanding that oxygen
+generation requires photosynthesis.</p>
+          </div>
+        </div>
+        <div class="container5" style="margin-top: 130px; display: flex; text-align: justify;">
+        </br>
+        <div class="txt" style="width: 400px; margin-top: -13px; margin-left: 20px;">
+          <h3 style="font-size: 34px;">Discovery of Skeleton Panda Sea Squirt</h3>
+          <p style="font-size: 20px; margin-top: 10px;">The Skeleton Panda Sea Squirt
+(Clavelina ossipandae), discovered near
+Kume Island, Japan, has a striking
+panda-like appearance. Found in coral
+reefs, it forms colonies that filter
+plankton from the water.
+</p>
+      </br>
+      <div class="article" style="width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; background-color: red;">
+        <a href="https://edition.cnn.com/videos/world/2024/02/20/skeleton-panda-sea-squirt-japan-cprog-orig-jc.cnn" style="color: white;">Article</a>
+      </div>
+        </div>
+          <div class="imag" style="margin-left: 60px;">
+            <img src="panda.jpg" alt="" height="350px" width="600px">
+          </div>
+        </div>
+    </section>
+    <hr width="1100px" style="margin-top: 75px;">
+    <section id="tech">
+
+  <div class="my_animation">
+    <span class="rdj"><p>TECHNOLOGY </p>
+  </div>
+  <div class="subm" style="height: fit-content; width: fit-content;">
+    <img src="submarine.png" alt="jellyfish" style="margin-top: -120px; margin-left: 900px; z-index: 9999999999;">
+  </div>
+
+    <div style="width: 600px; margin-left: 240px; margin-top: 50px; margin-bottom: 50px;">
+        <p style="width:600px; font-size: 1.4rem; text-align: justify;">Exploring the deep ocean requires
+cutting-edge technology to overcome
+extreme pressure, darkness, and
+vastness. Here are some key
+technologies driving deep-sea
+exploration:</p>
+      </div>
+
+     <div style="display: flex; gap:200px">
+      <div class="c" style="margin-top: 50px" data-aos="zoom-in" data-aos-duration="4000">
+        <img src="submar.jpg" alt="Submarine Image" class="c__image">
+        <div class="c__content">
+          <p class="c__title">Submersible</p>
+          <p class="card__description" style="font-size: 1.1rem">A submersible is a specialized
+underwater vehicle designed to explore
+extreme ocean depths, often supported
+by a surface vessel.
+</br>
+</br>
+<b>Example:</b>
+</br>
+The DSV Alvin, a manned submersible,
+has been used to explore hydrothermal
+vents, shipwrecks like the Titanic, and
+deep-sea ecosystems, reaching depths
+of up to 6,500 meters.
+</p>
+        </div>
+      </div>
+      <div class="c" style="margin-top: 50px" data-aos="zoom-in" data-aos-duration="4000">
+        <img src="auv.jpg" alt="Submarine Image" class="c__image">
+        <div class="c__content">
+          <p class="c__title">AUVs</p>
+          <p class="card__description" style="font-size: 1rem">AUVs are advanced, self-guided
+underwater robots designed to explore
+and monitor the deep ocean without
+human intervention. They are essential
+for tasks like seafloor mapping,
+ecosystem monitoring, and underwater
+exploration.
+</br>
+<b>Example:</b>
+</br>
+The Boaty McBoatface AUV, operated by
+the UK's National Oceanography Centre,
+is a groundbreaking AUV capable of
+diving to depths of 6,000 meters. It has
+been used to study deep-sea currents
+and their impact on climate change.
+</p>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap:200px">
+     <div class="c" style="margin-top: 50px" data-aos="zoom-in" data-aos-duration="4000">
+       <img src="sonar.jpg" alt="Submarine Image" class="c__image">
+       <div class="c__content">
+         <p class="c__title">SONAR</p>
+         <p class="card__description" style="font-size: 1.1rem">SONAR (Sound Navigation and Ranging)
+is used to map the seafloor, detect
+underwater objects, and study marine
+life by emitting sound waves and
+analyzing the returned echoes.
+</br>
+<b>Example:</b>
+</br>
+The Kongsberg EM 124 Multibeam
+SONAR system is widely used to create
+high-resolution maps of the ocean floor,
+helping discover new underwater
+features like mountains and shipwrecks.
+</p>
+       </div>
+     </div>
+     <div class="c" style="margin-top: 50px" data-aos="zoom-in" data-aos-duration="4000">
+       <img src="dcs.jpg" alt="Submarine Image" class="c__image">
+       <div class="c__content">
+         <p class="c__title">Deep Sea Cameras</p>
+         <p class="card__description" style="font-size: 1rem">Deep-sea cameras are specialized
+imaging systems designed to capture
+high-resolution visuals in extreme
+underwater conditions, including
+darkness and high pressure.
+</br>
+</br>
+<b>Example:</b>
+</br>
+The Hadal-Lander Camera System has
+been used to film life in the Mariana
+Trench, capturing rare footage of
+deep-sea creatures like amphipods and
+snailfish at depths over 10,000 meters.
+</p>
+       </div>
+     </div>
+   </div>
+   <div style="margin-top: 100px; margin-left: 270px;">
+   <h3 style="font-size: 2.15rem; margin-bottom: 20px">AI and ML in deep sea discovery</h3>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/IgPe6CRXKjA?si=hg6wV-UTeZ945Hlq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen data-aos="fade-in" data-aos-duration="4000"></iframe>
+   </div>
+    </section>
+    <hr width="1100px" style="margin-top: 75px;">
+   <section id="products">
+     <span class="rrr"><h2 data-text="Our_Products" style="margin-left: 250px">Our_Products</h2></span>
+     <div class="seal" style="height: fit-content; width: fit-content;">
+       <img src="seal.png" alt="jellyfish" style="margin-top: -120px; margin-left: 900px; z-index: 9999999999;">
+     </div>
+     <p style="width: 700px; margin-left: 200px; font-size: 1.4rem; text-align: justify; margin-top:70px">Our products are your gateway to the
+ocean's hidden wonders, designed with
+precision and reliability to make every
+journey extraordinary. Experience
+excellence beneath the waves.</p>
+
+     <div style="display: flex; gap: 70px; margin-top: 100px;">
+     <div class="ca">
+
+  <div class="imBox">
+    <img src="mug.png" alt="mouse corsair" class="mouse" height="200px" width="200px">
+  </div>
+
+  <div class="contentBox">
+    <h3>Fish ceramic cofee cup</h3>
+    <h2 class="price">11.<small>11</small> €</h2>
+    <a href="#" class="buy">Buy Now</a>
+  </div>
+
+</div>
+
+<div class="ca">
+
+<div class="imBox">
+<img src="tutle toy.png" alt="mouse corsair" class="mouse" width="200px">
+</div>
+
+<div class="contentBox">
+<h3>Cute Green Turtle</h3>
+<h2 class="price">14.<small>99</small> €</h2>
+<a href="#" class="buy">Buy Now</a>
+</div>
+
+</div>
+
+<div class="ca">
+
+<div class="imBox">
+<img src="bag.png" alt="mouse corsair" class="mouse" height="700px" width="700px">
+</div>
+
+<div class="contentBox">
+<h3>Marine Animal Bag</h3>
+<h2 class="price">21.<small>67</small> €</h2>
+<a href="#" class="buy">Buy Now</a>
+</div>
+
+</div>
+</div>
+<div style="display: flex; gap: 70px; margin-top: 100px;">
+<div class="ca">
+
+<div class="imBox">
+<img src="water_game.png" alt="mouse corsair" class="mouse" height="200px" width="200px">
+</div>
+
+<div class="contentBox">
+<h3>Crazy Water Games</h3>
+<h2 class="price">9.<small>99</small> €</h2>
+<a href="#" class="buy">Buy Now</a>
+</div>
+
+</div>
+
+<div class="ca">
+
+<div class="imBox">
+<img src="shirt.png" alt="mouse corsair" class="mouse" width="200px">
+</div>
+
+<div class="contentBox">
+<h3>Blue Ocean Shirt</h3>
+<h2 class="price">10.<small>14</small> €</h2>
+<a href="#" class="buy">Buy Now</a>
+</div>
+
+</div>
+
+<div class="ca">
+
+<div class="imBox">
+<img src="pillow.png" alt="mouse corsair" class="mouse" height="700px" width="700px">
+</div>
+
+<div class="contentBox">
+<h3>Ocean Animal Pillows</h3>
+<h2 class="price">101.<small>67</small> €</h2>
+<a href="#" class="buy">Buy Now</a>
+</div>
+
+</div>
+</div>
+</section>
+<hr width="1100px" style="margin-top: 75px;">
+<section id="dyk" style="margin-top: 75px;">
+    <marquee><h2 style="font-size: 4rem; color: orangered; margin-bottom: 200px;">DID YOU KNOW ?</h2></marquee>
+    <div class="slug" style="height: fit-content; width: fit-content; margin-top:-100px">
+      <img src="slug.png" alt="jellyfish" style="margin-top: -120px; margin-left: 900px; z-index: 9999999999;">
+    </div>
+    <div style="display: flex; gap: 0px">
+      <div class="rt">
+        <figure class="card-1">
+          <img src="danger.jpg" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 40px;"">
+         Many Deep Sea creatures look alien with glowing bodies, huge eyes and transparent skin.
+        </div>
+      </div>
+      <div class="rt">
+        <figure class="card-1">
+          <img src="pressure.webp" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 50px;">
+        The pressure in the
+deep sea is so high that it's like having
+50 jumbo jets stacked on you. Yet,
+life still thrives there!
+        </div>
+      </div>
+      <div class="rt">
+        <figure class="card-1">
+          <img src="co.png" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 60px;">
+         Deep Sea sponges can live for over 10,000 years, making them some of the oldest living organisms on the Earth.
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 0px">
+      <div class="rt">
+        <figure class="card-1">
+          <img src="snow.webp"  height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 50px;">
+        "Marine Snow" is a
+constant shower of organic
+particles that feeds deep-sea
+creatures in the dark depths.
+
+        </div>
+      </div>
+      <div class="rt">
+        <figure class="card-1">
+          <img src="fit.jpeg" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 40px;">
+        Many deep-sea
+creatures, like the anglerfish,
+produce their own light through
+bioluminescence to hunt or attract
+mates.
+        </div>
+      </div>
+      <div class="rt">
+        <figure class="card-1">
+          <img src="fall.webp" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 40px;">
+        The Denmark Strait
+cataract is the largest waterfall on
+Earth-and it's underwater. It's
+taller than three Angel Falls
+combined!
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 0px">
+      <div class="rt">
+        <figure class="card-1">
+          <img src="squid.jpg" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 40px;">
+         The Colossal Squid can grow up to 14 meters making
+         it one of the largest invertebrates in the world.
+        </div>
+      </div>
+      <div class="rt">
+        <figure class="card-1">
+          <img src="hydro.webp" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 40px;">
+        Hydrothermal vents
+in the deep sea release water
+hotter than 400℃ (750ºF)-hot
+enough to melt lead?
+
+        </div>
+      </div>
+      <div class="rt">
+        <figure class="card-1">
+          <img src="mar.jpg" height="300px" width="300px" style="border-radius: 20px">
+        </figure>
+        <div class="til">
+          <h2 style="font-size: 1.7rem;">Did You Know</h2>
+        </div>
+        <div class="co" style="text-align: justify; margin-bottom: 40px;">
+        The deepest point on
+Earth is the Challenger Deep,
+plunging over 11 km (7 miles)
+below the surface. That's deeper
+than Mount Everest is tall!
+        </div>
+      </div>
+    </div>
+
+<div class="anmm" style="margin-top: 100px; margin-left: 80px;">
+  <h2>A Glimpse Into The Depths</h2>
+</div>
+<div class="scope" style="margin-top: 200px; margin-left: 450px;">
+  <span style="--i:1;"><img src="1.jpg" alt="not found"></span>
+  <span style="--i:2;"><img src="2.jpg" alt="not found"></span>
+  <span style="--i:3;"><img src="3.jpg" alt="not found"></span>
+  <span style="--i:4;"><img src="4.jpg" alt="not found"></span>
+  <span style="--i:5;"><img src="5.jpg" alt="not found"></span>
+  <span style="--i:6;"><img src="gint.avif" alt="not found"></span>
+  <span style="--i:7;"><img src="7.jpg" alt="not found"></span>
+  <span style="--i:8;"><img src="8.jpg" alt="not found"></span>
+</div>
+<p style="width: 700px; margin-left: 180px; font-size: 1.4rem; text-align: justify; margin-top: 200px;">The deep ocean holds countless secrets
+waiting to be discovered. With
+cutting-edge technology, innovative
+research, and a passion for exploration,
+we continue to dive deeper, revealing
+the wonders of Earth's final frontier.
+Join us in this incredible journey to
+unlock the mysteries of the deep and
+protect its fragile ecosystems for
+generations to come.</p>
+   <img src="coral.png" height="200px" style="bottom:0; margin-top:110px; margin-left: -50px">
+   <img src="coral2.png" height="150px" style="bottom:0; margin-top:110px; margin-left: 100px">
+   <img src="tur.png" height="150px" style="bottom:0; margin-top:110px; margin-left: 150px">
+   <img src="coral5.png" height="150px" style="bottom:0; margin-top:110px; margin-left: 20px">
+   <img src="coral1.png" height="200px" style="bottom:0; margin-top:100px; margin-left: 30px">
+   </section>
+   <footer style="margin-left: -50px; margin-top: -25px; height: 700px; display: grid; place-items: center; margin-left: -115px">
+   <div class="wrapper">
+      <div class="form-wrapper">
+          <form  action="https://api.web3forms.com/submit" method="POST">
+              <h2>Contact Form</h2>
+                  <input type="hidden" name="access_key" value="ffad1185-4567-4dc7-aec0-68f45d6a78a0">
+              <div class="input-box">
+                  <span class="icon">
+                      <ion-icon name="person"></ion-icon>
+                  </span>
+                  <input type="text" placeholder="Name" name="name" required>
+              </div>
+              <div class="input-box">
+                  <span class="icon">
+                      <ion-icon name="mail"></ion-icon>
+                  </span>
+                  <input type="email" placeholder="Email" name="email" required>
+              </div>
+              <div class="input-box">
+                  <span class="icon">
+                      <ion-icon name="chatbubble"></ion-icon>
+                  </span>
+                  <textarea placeholder="Message" required name="message"></textarea>
+                  <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              </div>
+              <button type="submit">Send Message</button>
+          </form>
+      </div>
+      <div class="text-right">
+          <h2>Thank You</h2>
+          <p style="color: black; text-align: justify;">For diving deep with us into the mysteries of the ocean. Stay curious and keep exploring!</p>
+          <div class="social-icons">
+              <a href="https://facebook.com" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
+              <a href="https://twitter.com" target="_blank"><ion-icon name="logo-youtube"></ion-icon></a>
+              <a href="https://www.instagram.com/sapanawakhare/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+              <a href="https://linkedin.com" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+          </div>
+      </div>
+    </div>
+    <p style="color: white;">&copy 2025 by Raghav Wakhare.</p>
+    </footer>
+
+  </main>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 100,
+        duration: 1000
+      });
+    </script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="GLTFLoader.js"></script>
+  <script>
+    document.querySelectorAll('.sidebar-links li a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default behavior of the anchor tag
+
+        // Remove 'active' class from all sidebar links
+        document.querySelectorAll('.sidebar-links li a').forEach(link => link.classList.remove('active'));
+        // Add 'active' class to the clicked link
+        this.classList.add('active');
+
+        // Smooth scroll to the section
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Manual Scroll Handling
+document.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('main section');
+    let index = sections.length;
+
+    while (--index && window.scrollY + 250 < sections[index].offsetTop) {}
+
+    document.querySelectorAll('.sidebar-links li a').forEach(link => link.classList.remove('active'));
+    if (sections[index]) {
+        const id = sections[index].getAttribute('id');
+        document.querySelector(`.sidebar-links li a[href="#${id}"]`).classList.add('active');
+    }
+});
+
+
+
+let box = document.querySelector(".box");
+let headingAnimation = document.querySelector(".title")
+let subHeading = document.querySelector('.subtitle')
+let fish = document.querySelector('.fish')
+let seaHorse = document.querySelector('.seahorse')
+let jellyFish = document.querySelector('.jellyfish')
+let starFish = document.querySelector('.starfish')
+let dolphin = document.querySelector('.dolphin')
+let oto = document.querySelector('.octo')
+let sub = document.querySelector('.subm')
+let seal = document.querySelector('.seal')
+let slug = document.querySelector('.slug')
+
+
+gsap.to(fish, 7, {x:-1000, delay:1})
+gsap.to(seaHorse, 4, {x:-620, y:500, delay:1})
+gsap.to(jellyFish, 13, {x:-720, y:2190, delay:9})
+gsap.to(starFish, 12, {x:-710, y:2050, delay:25})
+gsap.to(dolphin, 17, {x:-750, y:3750, delay:43})
+gsap.to(oto, 17, {x:-750, y:3350, delay:60})
+gsap.to(sub, 17, {x:-830, y:1700, delay:75})
+gsap.to(seal, 17, {x:-790, y:1700, delay:92})
+gsap.to(slug, 13, {x:-790, y:2400, delay:1})
+
+
+ ScrollReveal({
+  reset: true,
+  distance: '60px',
+  duration: 1500,
+  delay: 400
+  });
+
+  ScrollReveal().reveal('.title', { delay: 500, origin:'left'});
+  ScrollReveal().reveal('.subtitle', { delay: 1500, origin:"right"});
+  ScrollReveal().reveal('.content .img1', { delay: 1500, origin:"bottom"});
+  ScrollReveal().reveal('.content .text-box', { delay: 1500, origin:"top"});
+  ScrollReveal().reveal('.container5 .imag', {  origin:"left"});
+  ScrollReveal().reveal('.container5 .txt', { origin:"right"});
+
+
+  window.addEventListener("load", () => {
+  const results = Splitting({
+    target: ".image",
+    by: "cells",
+    image: true,
+    rows: 8
+  });
+
+  function myCallback(el) {
+    var a = new TimelineMax();
+    return a.staggerFromTo(
+      ".cell",
+      0.5,
+      {
+        x: 400,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        ease: Power2.ease
+      },
+      0.05
+    );
+  }
+
+  $(".image").waypoint(
+    function(direction) {
+      if (direction === "down") {
+        /* add this.destroy() if you want the animation to only play once */
+        myCallback();
+      }
+    },
+    {
+      offset: "100%"
+    }
+  );
+});
+
+  </script>
+
+</body>
+</html>
